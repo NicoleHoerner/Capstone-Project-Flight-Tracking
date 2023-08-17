@@ -11,7 +11,7 @@ export default function Home() {
     async function getFlights() {
       const res = await fetch("/api/hello");
       const data = await res.json();
-      setFlights(data.data.data);
+      setFlights(data.data.data.slice(0, 10));
       console.log(data);
     }
     getFlights();
