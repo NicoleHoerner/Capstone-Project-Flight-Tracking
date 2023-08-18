@@ -9,10 +9,9 @@ export default function Home() {
   const [flights, setFlights] = useState([]);
   useEffect(() => {
     async function getFlights() {
-      const res = await fetch("/api/hello");
-      const data = await res.json();
+      const response = await fetch("/api/hello");
+      const data = await response.json();
       setFlights(data.data.data.slice(0, 10));
-      console.log(data);
     }
     getFlights();
   }, []);

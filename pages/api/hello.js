@@ -1,10 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-export default async function handler(req, res) {
-  const response = await fetch(
-    "http://api.aviationstack.com/v1/flights?access_key=eef146cc9441c581c88b1ba9363a5d4b"
+export default async function handler(request, response) {
+  const apiResponse = await fetch(
+    "http://api.aviationstack.com/v1/flights?access_key=f329489ecd31b6e7c6c07b3260005c6a"
   );
 
-  const data = await response.json();
-  res.status(200).json({ data: data });
+  const data = await apiResponse.json();
+  response.status(200).json({ data: data });
 }
