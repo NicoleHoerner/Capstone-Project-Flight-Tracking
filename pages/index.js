@@ -1,9 +1,7 @@
 import Head from "next/head";
+import Navigation from "../components/Navigation";
 import styled from "styled-components";
-import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [flights, setFlights] = useState([]);
@@ -25,28 +23,27 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={inter.className}>
-        <Heading>🐧Penguin Capstone Template🐧</Heading>
-        {flights.length > 0 && (
-          <FlightInfo>
-            <StyledH2>Flight Information</StyledH2>
-            <FlightList>
-              {flights.map((flight) => (
-                <FlightItem key={flight.flight.number}>
-                  <p>
-                    <FlightNumber>{flight.flight.iata}</FlightNumber> Airline:{" "}
-                    {flight.airline.name}
-                  </p>
-                  <p>Flight Date: {flight.flight_date}</p>
-                  <p>Departure Airport: {flight.departure.airport}</p>
-                  <p>Arrival Airport: {flight.arrival.airport}</p>
-                  <p>Flight Status: {flight.flight_status}</p>
-                </FlightItem>
-              ))}
-            </FlightList>
-          </FlightInfo>
-        )}
-      </main>
+      <Heading>🐧Penguin Capstone Template🐧</Heading>
+      <Navigation />
+      {flights.length > 0 && (
+        <FlightInfo>
+          <StyledH2>Flight Information</StyledH2>
+          <FlightList>
+            {flights.map((flight) => (
+              <FlightItem key={flight.flight.number}>
+                <p>
+                  <FlightNumber>{flight.flight.iata}</FlightNumber> Airline:{" "}
+                  {flight.airline.name}
+                </p>
+                <p>Flight Date: {flight.flight_date}</p>
+                <p>Departure Airport: {flight.departure.airport}</p>
+                <p>Arrival Airport: {flight.arrival.airport}</p>
+                <p>Flight Status: {flight.flight_status}</p>
+              </FlightItem>
+            ))}
+          </FlightList>
+        </FlightInfo>
+      )}
     </>
   );
 }
