@@ -12,10 +12,13 @@ export default createGlobalStyle`
 
   :root{
     font-family: ${varelaRound.style.fontFamily};
+    color: #112A46;
   }
 
   body {
     margin: 0;
     font-family: var(--font-varela);
+    color: #112A46;
+    background-color: #7CB9E8;
   }
 `;

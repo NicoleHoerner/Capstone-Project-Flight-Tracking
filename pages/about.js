@@ -1,56 +1,64 @@
-import Navigation from "../components/Navigation";
 import styled from "styled-components";
-//import Image from "next/image";
-import lineIcon from "../public/lineIcon.svg";
 
 export default function AboutPage() {
   return (
     <>
-      <Navigation />
       <H1>Simple Tracking.</H1>
-      <StyledImage src={lineIcon} alt="line" />
-      <H2> About this app.</H2>
+
+      <H2>
+        About this <StyledWord>App</StyledWord>.
+      </H2>
+      <H3>Purpose of this flight tracking app</H3>
+      <StyledText>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+        amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+        rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+        ipsum dolor sit amet.
+      </StyledText>
     </>
   );
 }
 
-/* Simple Tracking. */
 const H1 = styled.h1`
-  position: absolute;
-  width: 169px;
-  height: 24px;
-  left: 47px;
-  top: 77px;
+  margin: 5px auto;
+  text-align: center;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
-  line-height: 24px;
-  color: #000000;
+  max-width: 600px;
+  position: relative;
+  z-index: -1;
 `;
 
-/* identical to box height */
-
-/* lineIcon */
-const StyledImage = styled.span`
-  position: absolute;
-  width: 54.1px;
-  height: 0px;
-  left: 51.89px;
-  top: 122px;
-  border: 2px solid #000000;
-`;
-
-/* About this App. */
 const H2 = styled.h2`
-  position: absolute;
-  width: 175px;
-  height: 24px;
-  left: 113px;
-  top: 101px;
+  margin: auto;
+  text-align: center;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  line-height: 19px;
+  max-width: 600px;
+  position: relative;
+  padding-left: 113px;
+  z-index: -1;
+`;
 
-  color: #000000;
+const StyledWord = styled.span`
+  color: #3951a3;
+`;
+const H3 = styled.h3`
+  text-align: center;
+  font-size: 15px;
+  padding: 50px;
+  margin: 40px;
+`;
+
+const StyledText = styled.p`
+  font-size: 14px;
+  margin: 20px;
+  padding: 0 1em;
 `;

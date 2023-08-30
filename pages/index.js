@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Navigation from "../components/Navigation";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
@@ -24,7 +23,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Heading>🐧Penguin Capstone Template🐧</Heading>
-      <Navigation />
       {flights.length > 0 && (
         <FlightInfo>
           <StyledH2>Flight Information</StyledH2>
@@ -52,14 +50,14 @@ const Heading = styled.h1`
   text-align: center;
 `;
 const FlightInfo = styled.section`
-  background-color: #f5f5f5;
+  background-color: #7cb9e8;
   padding: 16px;
   margin-top: 16px;
 `;
 
 const StyledH2 = styled.h2`
   font-size: 1.2rem;
-  background-color: #cbd5e1;
+  background-color: #eee7de;
   border: none;
   border-radius: 10px;
   padding: 6px 12px;
@@ -75,7 +73,7 @@ const FlightItem = styled.li`
 `;
 
 const FlightNumber = styled.span`
-  background-color: #cbd5e1;
+  background-color: #eee7de;
   border: none;
   border-radius: 10px;
   padding: 6px 12px;
