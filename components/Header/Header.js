@@ -19,7 +19,7 @@ export default function Header() {
           alt="Hamburger Menu"
           onClick={showSidebar}
         />
-        {sidebar && <Navigation active={setSidebar} />}
+        {sidebar && <Navigation onClose={() => setSidebar(false)} />}
       </StyledMenuIcon>
     </Container>
   );

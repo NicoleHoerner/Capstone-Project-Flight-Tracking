@@ -8,10 +8,7 @@ import {
   StyledCloseIcon,
 } from "./Navigation.styled";
 
-const Navigation = ({ active }) => {
-  const closeSidebar = () => {
-    active(false);
-  };
+const Navigation = ({ onClose }) => {
   return (
     <StyledNavWrapper>
       <StyledCloseIcon>
@@ -20,7 +17,7 @@ const Navigation = ({ active }) => {
           width={30}
           height={30}
           alt="close icon"
-          onClick={closeSidebar}
+          onClick={onClose}
         />
       </StyledCloseIcon>
       <StyledNav>
