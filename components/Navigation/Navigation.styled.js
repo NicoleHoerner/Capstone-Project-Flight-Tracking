@@ -52,7 +52,6 @@ export const StyledNavLink = styled(Link)`
 
 export const StyledCloseIcon = styled.span`
   position: fixed;
-  color: #394855;
   width: 30px;
   height: 30px;
   margin-top: 10px;
