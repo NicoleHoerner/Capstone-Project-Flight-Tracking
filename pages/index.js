@@ -57,6 +57,7 @@ const FlightInfo = styled.section`
 const StyledH2 = styled.h2`
   font-size: 1.2rem;
   background-color: #eee7de;
+  width: max-content;
   border: none;
   border-radius: 10px;
   padding: 6px 12px;
