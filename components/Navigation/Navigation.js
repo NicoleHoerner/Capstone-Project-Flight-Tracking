@@ -23,6 +23,7 @@ const Navigation = ({ onClose }) => {
       <StyledNav>
         <StyledUl>
           <StyledNavLink href="/">Dashboard</StyledNavLink>
+          <StyledNavLink href="/flight_list">Flights</StyledNavLink>
           <StyledNavLink href="/about">About</StyledNavLink>
         </StyledUl>
       </StyledNav>

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styled from "styled-components";
+import { FlightNumber } from "../components/StyledComponents/StyledFlightNumber";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -57,6 +58,7 @@ const FlightInfo = styled.section`
 const StyledH2 = styled.h2`
   font-size: 1.2rem;
   background-color: #eee7de;
+  width: max-content;
   border: none;
   border-radius: 10px;
   padding: 6px 12px;
@@ -69,11 +71,4 @@ const FlightList = styled.ul`
 
 const FlightItem = styled.li`
   margin: 40px 0;
-`;
-
-const FlightNumber = styled.span`
-  background-color: #eee7de;
-  border: none;
-  border-radius: 10px;
-  padding: 6px 12px;
 `;
