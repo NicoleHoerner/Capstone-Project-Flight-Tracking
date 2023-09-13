@@ -4,7 +4,6 @@ export default function AboutPage() {
   return (
     <>
       <H1>Simple Tracking.</H1>
-
       <H2>
         About this <StyledWord>App</StyledWord>.
       </H2>

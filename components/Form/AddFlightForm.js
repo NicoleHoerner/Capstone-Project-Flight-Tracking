@@ -5,82 +5,30 @@ import {
   StyledHeading,
   StyledLabel,
 } from "./AddFlightForm.styled";
-import { useState } from "react";
+//import { useState } from "react";
 
-export default function AddFlightForm({ onAddFlight }) {
-  const [flightNumber, setFlightNumber] = useState("");
-  const [dateOfFlight, setDateOfFlight] = useState("");
-  const [departure, setDeparture] = useState("");
-  const [arrival, setArrival] = useState("");
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Create a new flight object
-    const newFlight = {
-      flight_iata: flightNumber,
-      scheduled_date: {
-        month: "",
-        day: "",
-        year: "",
-      },
-      departure: "",
-      arrival: "",
-    };
-
-    // Call the onAddFlight function to add the new flight to the list
-    onAddFlight(newFlight);
-
-    // Clear the form inputs
-    setFlightNumber("");
-    setDateOfFlight("");
-    setDeparture("");
-    setArrival("");
-  };
-
-  /* const addFlight = () => {
-        // Define the addFlight function logic here
-    }; */
-
+export default function AddFlightForm() {
   return (
     <>
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm>
         <Card>
           <StyledHeading>Schedule your flight</StyledHeading>
           <StyledLabel htmlFor="flight number">Flight #</StyledLabel>
-          <input
-            type="text"
-            value={flightNumber}
-            onChange={(e) => setFlightNumber(e.target.value)}
-            required
-          />
+          <input type="text" required />
 
           <label>
             Date of Flight:
-            <input
-              type="text"
-              value={dateOfFlight}
-              onChange={(e) => setDateOfFlight(e.target.value)}
-              required
-            />
+            <input type="text" required />
           </label>
           <label>
             Departure:
-            <input
-              type="text"
-              value={departure}
-              onChange={(e) => setDeparture(e.target.value)}
-            />
+            <input type="text" />
           </label>
           <label>
             Arrival:
-            <input
-              type="text"
-              value={arrival}
-              onChange={(e) => setArrival(e.target.value)}
-            />
+            <input type="text" />
           </label>
-          <StyledAddButton onAddFlight={addFlight} />
+          <StyledAddButton />
         </Card>
       </StyledForm>
     </>
