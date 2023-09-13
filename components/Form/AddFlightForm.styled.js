@@ -47,4 +47,55 @@ export const StyledHeading = styled.title`
   margin-top: 1.5em;
 `;
 
-export const StyledLabel = styled.label``;
+export const InputBox = styled.div`
+  position: relative;
+  margin-bottom: 5px;
+  width: 250px;
+`;
+
+export const InputLabel = styled.span`
+  position: absolute;
+  left: 0;
+  top: 0px;
+  transform: translateY(-4px);
+  margin-left: 10px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 0.6rem;
+  color: #000;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 3px;
+  border-radius: 8px;
+  transform: ${(props) =>
+    props.isFocused || props.isValid
+      ? "translateX(113px) translateY(-15px)"
+      : "translateY(-4px)"};
+  font-size: ${(props) =>
+    props.isFocused || props.isValid ? "0.8em" : "12px"};
+  padding: ${(props) =>
+    props.isFocused || props.isValid ? "5px 10px" : "10px"};
+  background: ${(props) =>
+    props.isFocused || props.isValid ? "#000" : "transparent"};
+  letter-spacing: ${(props) =>
+    props.isFocused || props.isValid ? "0.2em" : "3px"};
+  color: ${(props) => (props.isFocused || props.isValid ? "#fff" : "#cbd5e1")};
+  border: ${(props) => (props.isFocused || props.isValid ? "2px" : "initial")};
+`;
+
+export const InputField = styled.input`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px;
+  padding: 8px;
+  border: 2px solid
+    ${(props) => (props.isFocused || props.isValid ? "#cbd5e1" : "initial")};
+  border-radius: 8px;
+  &:focus {
+    border-color: #cbd5e1;
+  }
+  &:valid {
+    border-color: #cbd5e1;
+  }
+`;
