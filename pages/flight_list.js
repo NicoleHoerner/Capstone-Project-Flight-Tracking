@@ -3,22 +3,24 @@ import { FlightNumber } from "../components/StyledComponents/StyledFlightNumber"
 import { flights } from "../data/septemberFlights";
 import { useState } from "react";
 import AddFlightForm from "../components/Form/AddFlightForm";
-import { useLocalStorageState } from "use-local-storage-state";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function FlightList() {
   const [showForm, setShowForm] = useState(false);
-  const [flightsList, setFlightsList] = useLocalStorageState("flights", []);
+  const [flightsList, setFlightsList] = useLocalStorageState("flights", {
+    defaultValue: [],
+  });
 
   function addFlight(newFlight) {
     const updatedFlights = [...flightsList, newFlight].sort((a, b) => {
       const dateA = new Date(
         a.scheduled_date.year,
-        a.scheduled_date.month, // You might need to convert month names to numbers
+        a.scheduled_date.month, // I might need to convert month names to numbers?
         a.scheduled_date.day
       );
       const dateB = new Date(
         b.scheduled_date.year,
-        b.scheduled_date.month, // You might need to convert month names to numbers
+        b.scheduled_date.month, // I might need to convert month names to numbers?
         b.scheduled_date.day
       );
       return dateA - dateB;

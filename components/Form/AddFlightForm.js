@@ -20,12 +20,12 @@ export default function AddFlightForm({ onAddFlight }) {
     const newFlight = {
       flight_iata: flightNumber,
       scheduled_date: {
-        month: "", // You'll need to parse the date here
+        month: "",
         day: "",
         year: "",
       },
-      departure: "", // Set the departure location
-      arrival: "", // Set the arrival location
+      departure: "",
+      arrival: "",
     };
 
     // Call the onAddFlight function to add the new flight to the list
