@@ -2,15 +2,34 @@ import styled from "styled-components";
 import { FlightNumber } from "../components/StyledComponents/StyledFlightNumber";
 import { flights } from "../data/septemberFlights";
 import { useState } from "react";
-import { useRouter } from "next/router";
+import AddFlightForm from "../components/Form/AddFlightForm";
+import { useLocalStorageState } from "use-local-storage-state";
 
 export default function FlightList() {
-  const router = useRouter();
   const [showForm, setShowForm] = useState(false);
+  const [flightsList, setFlightsList] = useLocalStorageState("flights", []);
+
+  function addFlight(newFlight) {
+    const updatedFlights = [...flightsList, newFlight].sort((a, b) => {
+      const dateA = new Date(
+        a.scheduled_date.year,
+        a.scheduled_date.month, // You might need to convert month names to numbers
+        a.scheduled_date.day
+      );
+      const dateB = new Date(
+        b.scheduled_date.year,
+        b.scheduled_date.month, // You might need to convert month names to numbers
+        b.scheduled_date.day
+      );
+      return dateA - dateB;
+    });
+    // Update the sorted flights list in localStorage and state
+    setFlightsList(updatedFlights);
+  }
 
   const handleAddFlightClick = () => {
     // Navigate to the form when the button is clicked
-    router.push("/flight-form");
+    setShowForm(true);
   };
   return (
     <>
@@ -43,7 +62,11 @@ export default function FlightList() {
           </FlightRow>
         ))}
       </ScheduledList>
-      <Button onClick={handleAddFlightClick}>Add Flight</Button>
+      {showForm ? (
+        <AddFlightForm onAddFlight={addFlight} />
+      ) : (
+        <Button onClick={handleAddFlightClick}>Add Flight</Button>
+      )}
     </>
   );
 }
