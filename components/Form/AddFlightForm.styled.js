@@ -10,7 +10,7 @@ export const Card = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 350px;
+  min-height: 450px;
   width: 300px;
   flex-direction: column;
   margin: 12px;
@@ -23,8 +23,8 @@ export const Card = styled.div`
 export const StyledAddButton = styled.button`
   height: 45px;
   width: 100px;
-  border-radius: 5px;
-  border: 2px solid #000;
+  border-radius: 60px;
+  border: 2px solid #cbd5e1;
   cursor: pointer;
   background-color: transparent;
   transition: 0.5s;
@@ -43,7 +43,7 @@ export const StyledHeading = styled.title`
   letter-spacing: 2px;
   display: block;
   font-weight: bold;
-  font-size: x-large;
+  font-size: 1rem;
   margin-top: 1.5em;
 `;
 

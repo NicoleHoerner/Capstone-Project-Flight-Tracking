@@ -12,7 +12,7 @@ export default function AddFlightForm() {
     <>
       <StyledForm>
         <Card>
-          <StyledHeading>Schedule your flight</StyledHeading>
+          <StyledHeading>Schedule your next flight</StyledHeading>
           <StyledLabel htmlFor="flight number">Flight #</StyledLabel>
           <input type="text" required />
 
@@ -28,7 +28,7 @@ export default function AddFlightForm() {
             Arrival:
             <input type="text" />
           </label>
-          <StyledAddButton />
+          <StyledAddButton type="submit">ADD FLIGHT</StyledAddButton>
         </Card>
       </StyledForm>
     </>
