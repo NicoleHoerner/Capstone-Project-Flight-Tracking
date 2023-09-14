@@ -90,7 +90,8 @@ export const InputField = styled.input`
   min-width: 200px;
   padding: 8px;
   border: 2px solid
-    ${(props) => (props.isFocused || props.isValid ? "#cbd5e1" : "initial")};
+    ${(props) =>
+      props.isFocused ? "#cbd5e1" : props.isValid ? "#cbd5e1" : "initial"};
   border-radius: 8px;
   &:focus {
     border-color: #cbd5e1;
