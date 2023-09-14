@@ -10,12 +10,16 @@ import {
 import { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { flights } from "@/data/septemberFlights";
+import { useRouter } from "next/router";
 
 export default function AddFlightForm() {
   const [flightsOfInterest, setFlightsOfInterest] = useLocalStorageState(
-    "flights",
+    "flightsInfo",
     { defaultValue: flights }
   );
+
+  const router = useRouter();
+
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => setIsFocused(true);
@@ -33,6 +37,7 @@ export default function AddFlightForm() {
     };
 
     setFlightsOfInterest([...flightsOfInterest, flightData]);
+    router.push("/flight_list");
     event.target.reset();
     event.target.flight_iata.focus();
   }
