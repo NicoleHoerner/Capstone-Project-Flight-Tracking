@@ -1,16 +1,15 @@
 import styled from "styled-components";
 import { FlightNumber } from "../components/StyledComponents/StyledFlightNumber";
 import { flights } from "../data/septemberFlights";
-import { useState } from "react";
 import { useRouter } from "next/router";
+//import useLocalStorageState from "use-local-storage-state";
 
 export default function FlightList() {
   const router = useRouter();
-  const [showForm, setShowForm] = useState(false);
 
   const handleAddFlightClick = () => {
     // Navigate to the form when the button is clicked
-    router.push("/add-flight-form");
+    router.push("/add-flight");
   };
   return (
     <>
