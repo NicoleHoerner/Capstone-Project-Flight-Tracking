@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FlightNumber } from "../components/StyledComponents/StyledFlightNumber";
 import { flights } from "../data/septemberFlights";
 import { useRouter } from "next/router";
-//import useLocalStorageState from "use-local-storage-state";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function FlightList() {
   const router = useRouter();
@@ -11,6 +11,11 @@ export default function FlightList() {
     // Navigate to the form when the button is clicked
     router.push("/add-flight");
   };
+
+  const [flightsOfInterest] = useLocalStorageState("flightsInfo", {
+    defaultValue: [],
+  });
+
   return (
     <>
       <H1>Simple Tracking.</H1>
@@ -20,7 +25,7 @@ export default function FlightList() {
       <H3>Scheduled Flights</H3>
 
       <ScheduledList>
-        {flights.map((flight) => (
+        {flightsOfInterest.map((flight) => (
           <FlightRow key={flight.flight_iata}>
             <StyledFlightInfo>
               <FlightNumber>{flight.flight_iata}</FlightNumber>
