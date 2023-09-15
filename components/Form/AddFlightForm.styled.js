@@ -10,7 +10,7 @@ export const Card = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 450px;
+  min-height: 500px;
   width: 300px;
   flex-direction: column;
   margin: 12px;
@@ -31,6 +31,7 @@ export const StyledAddButton = styled.button`
   text-transform: uppercase;
   font-size: 10px;
   letter-spacing: 2px;
+  margin-top: 3em;
   margin-bottom: 3em;
   &:hover {
     background-color: rgb(0, 0, 0);
