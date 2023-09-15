@@ -100,3 +100,9 @@ export const InputField = styled.input`
     border-color: #cbd5e1;
   }
 `;
+
+export const StyledInfoText = styled.span`
+  font-size: 0.6rem; /* Small font size */
+  color: #999; /* Light grey color */
+  margin-top: 4px;
+`;

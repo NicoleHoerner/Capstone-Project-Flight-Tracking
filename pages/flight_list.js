@@ -13,7 +13,7 @@ export default function FlightList() {
   };
 
   const [flightsOfInterest] = useLocalStorageState("flightsInfo", {
-    defaultValue: [],
+    defaultValue: flights,
   });
 
   return (
@@ -31,8 +31,9 @@ export default function FlightList() {
               <FlightNumber>{flight.flight_iata}</FlightNumber>
               <FlightDetails>
                 <FlightDetailLabel>DATE</FlightDetailLabel>
-                {flight.scheduled_date.month} {flight.scheduled_date.day},{" "}
-                {flight.scheduled_date.year}
+                {new Date(flight.scheduled_date).getFullYear()}-
+                {new Date(flight.scheduled_date).getMonth() + 1}-{" "}
+                {new Date(flight.scheduled_date).getDate()}{" "}
               </FlightDetails>
               <FlightDetails>
                 <FlightDetailLabel>FROM</FlightDetailLabel>

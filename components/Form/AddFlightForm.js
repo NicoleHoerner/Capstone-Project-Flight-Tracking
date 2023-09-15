@@ -6,6 +6,7 @@ import {
   InputLabel,
   InputBox,
   InputField,
+  StyledInfoText,
 } from "./AddFlightForm.styled";
 import { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
@@ -29,12 +30,6 @@ export default function AddFlightForm() {
     event.preventDefault();
     const formData = new FormData(event.target);
     const flightData = Object.fromEntries(formData);
-    const date = new Date(flightData.scheduled_date);
-    flightData.scheduled_date = {
-      year: date.getFullYear(),
-      month: date.getMonth(),
-      day: date.getDate(),
-    };
 
     setFlightsOfInterest([...flightsOfInterest, flightData]);
     router.push("/flight_list");
@@ -71,6 +66,9 @@ export default function AddFlightForm() {
                 }
               }}
             />
+            <StyledInfoText>
+              e.g. &quot;CM288&quot;, &quot;LH18&quot;, &quot;KL757&quot;
+            </StyledInfoText>
           </InputBox>
           <InputBox>
             <InputLabel htmlFor="scheduled_date" isFocused={isFocused}>
