@@ -26,7 +26,7 @@ export default function FlightList() {
 
       <ScheduledList>
         {flightsOfInterest.map((flight) => (
-          <FlightRow key={flight.flight_iata}>
+          <FlightRow key={`${flight.flight_iata}-${flight.scheduled_date}`}>
             <StyledFlightInfo>
               <FlightNumber>{flight.flight_iata}</FlightNumber>
               <FlightDetails>
