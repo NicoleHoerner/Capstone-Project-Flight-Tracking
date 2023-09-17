@@ -54,7 +54,7 @@ export const InputBox = styled.div`
   width: 250px;
 `;
 
-export const InputLabel = styled.span`
+export const InputLabel = styled.label`
   position: absolute;
   left: 0;
   top: 0px;
