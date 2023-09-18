@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import useLocalStorageState from "use-local-storage-state";
 
 import {
   ModalOverlay,
@@ -17,10 +16,25 @@ export default function EditFlightModal({ onClose, selectedFlight, onSave }) {
   const [flightIata, setFlightIata] = useState(
     selectedFlight?.flight_iata || ""
   );
-  const scheduledDate = selectedFlight?.scheduled_date || " ";
+  const [scheduledDate, setScheduledDate] = useState(
+    selectedFlight?.scheduled_date || ""
+  );
+  const [departure, setDeparture] = useState(selectedFlight?.departure || "");
+  const [arrival, setArrival] = useState(selectedFlight?.arrival || "");
 
-  const handleFlightIataChange = (e) => {
-    setFlightIata(e.target.value);
+  const handleFlightIataChange = (event) => {
+    setFlightIata(event.target.value);
+  };
+  const handleScheduledDateChange = (event) => {
+    setScheduledDate(event.target.value);
+  };
+
+  const handleDepartureChange = (event) => {
+    setDeparture(event.target.value);
+  };
+
+  const handleArrivalChange = (event) => {
+    setArrival(event.target.value);
   };
 
   /* const handleSaveChanges = () => {
@@ -41,6 +55,27 @@ export default function EditFlightModal({ onClose, selectedFlight, onSave }) {
               name="flight_iata"
               defaultValue={flightIata}
               onChange={handleFlightIataChange}
+            />
+            <InputField
+              type="date"
+              id="scheduled_date"
+              name="scheduled_date"
+              defaultValue={scheduledDate}
+              onChange={handleScheduledDateChange}
+            />
+            <InputField
+              type="text"
+              id="departure"
+              name="departure"
+              defaultValue={departure}
+              onChange={handleDepartureChange}
+            />
+            <InputField
+              type="text"
+              id="arrival"
+              name="arrival"
+              defaultValue={arrival}
+              onChange={handleArrivalChange}
             />
             {/* Add similar input fields for other flight details */}
           </ModalBody>
