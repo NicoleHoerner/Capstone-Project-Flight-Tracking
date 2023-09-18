@@ -15,17 +15,16 @@ export default function FlightList() {
     router.push("/add-flight");
   };
 
-  const [flightsOfInterest] = useLocalStorageState("flightsInfo", {
-    defaultValue: flights,
-  });
+  const [flightsOfInterest, setFlightsOfInterest] = useLocalStorageState(
+    "flightsInfo",
+    {
+      defaultValue: flights,
+    }
+  );
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedFlight, setSelectedFlight] = useState(null);
 
-  /* const handleEditClick = (flight) => {
-    setSelectedFlight(flight);
-    setIsEditModalOpen(true);
-  }; */
   const handleEditClick = (flight) => {
     // Access the flight data from local storage
     const storedFlights = flightsOfInterest;
@@ -42,7 +41,19 @@ export default function FlightList() {
   };
 
   const handleEditModalSave = (editedFlightData) => {
-    // Update the flight data in your main state (flightsOfInterest)
+    // Update the flight data in main state (flightsOfInterest)
+    const updatedFlights = flightsOfInterest.map((flight) => {
+      if (
+        flight.flight_iata === editedFlightData.flight_iata &&
+        flight.scheduled_date === editedFlightData.scheduled_date
+      ) {
+        return { ...flight, ...editedFlightData };
+      }
+      return flight;
+    });
+
+    setFlightsOfInterest(updatedFlights);
+
     // Close the edit modal
     setIsEditModalOpen(false);
   };
@@ -90,6 +101,7 @@ export default function FlightList() {
       <Button onClick={handleAddFlightClick}>Add Flight</Button>
       {isEditModalOpen && (
         <EditFlightModal
+          onClose={() => setIsEditModalOpen(false)}
           selectedFlight={selectedFlight}
           onSave={handleEditModalSave}
         />

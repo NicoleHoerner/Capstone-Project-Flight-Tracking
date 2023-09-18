@@ -39,7 +39,22 @@ export const ModalFooter = styled.div`
   justify-content: flex-end;
 `;
 
-export const ModalButton = styled.button`
+export const CancelButton = styled.button`
+  background: #f8afa6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background: #31447e;
+  }
+`;
+
+export const SubmitButton = styled.button`
   background: #3951a3;
   color: white;
   border: none;

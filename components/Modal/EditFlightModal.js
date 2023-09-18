@@ -7,7 +7,8 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  ModalButton,
+  CancelButton,
+  SubmitButton,
   InputLabel,
   InputField,
 } from "./EditFlightModal.styled";
@@ -37,13 +38,21 @@ export default function EditFlightModal({ onClose, selectedFlight, onSave }) {
     setArrival(event.target.value);
   };
 
-  /* const handleSaveChanges = () => {
-    // Call the onSave function with the edited data
+  const handleSaveChanges = () => {
+    event.preventDefault();
+    const editedFlightData = {
+      flight_iata: flightIata,
+      scheduled_date: scheduledDate,
+      departure: departure,
+      arrival: arrival,
+    };
+
     onSave(editedFlightData);
-  }; 
- */
+    onClose();
+  };
+
   const modalContent = (
-    <ModalOverlay onClick={onClose}>
+    <ModalOverlay onClose={onClose}>
       <ModalContainer>
         <form>
           <ModalHeader>Edit Flight</ModalHeader>
@@ -80,10 +89,12 @@ export default function EditFlightModal({ onClose, selectedFlight, onSave }) {
             {/* Add similar input fields for other flight details */}
           </ModalBody>
           <ModalFooter>
-            <ModalButton /* onClick={handleSaveChanges} */>
+            <SubmitButton type="submit" onClick={handleSaveChanges}>
               Save Changes
-            </ModalButton>
-            <ModalButton onClick={onClose}>Cancel</ModalButton>
+            </SubmitButton>
+            <CancelButton type="button" onClick={onClose}>
+              Cancel
+            </CancelButton>
           </ModalFooter>
         </form>
       </ModalContainer>
