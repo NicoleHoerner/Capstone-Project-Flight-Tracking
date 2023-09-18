@@ -1,8 +1,11 @@
 import styled from "styled-components";
+import Pencil from "../components/Icons/EditIcon";
+import EditFlightModal from "../components/Modal/EditFlightModal";
 import { FlightNumber } from "../components/StyledComponents/StyledFlightNumber";
 import { flights } from "../data/septemberFlights";
 import { useRouter } from "next/router";
 import useLocalStorageState from "use-local-storage-state";
+import { useState } from "react";
 
 export default function FlightList() {
   const router = useRouter();
@@ -15,6 +18,34 @@ export default function FlightList() {
   const [flightsOfInterest] = useLocalStorageState("flightsInfo", {
     defaultValue: flights,
   });
+
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [selectedFlight, setSelectedFlight] = useState(null);
+
+  /* const handleEditClick = (flight) => {
+    setSelectedFlight(flight);
+    setIsEditModalOpen(true);
+  }; */
+  const handleEditClick = (flight) => {
+    // Access the flight data from local storage
+    const storedFlights = flightsOfInterest;
+
+    // Find the specific flight that corresponds to the clicked IconButton
+    const selectedFlight = storedFlights.find(
+      (storedFlight) =>
+        storedFlight.flight_iata === flight.flight_iata &&
+        storedFlight.scheduled_date === flight.scheduled_date
+    );
+
+    setIsEditModalOpen(true);
+    setSelectedFlight(selectedFlight);
+  };
+
+  const handleEditModalSave = (editedFlightData) => {
+    // Update the flight data in your main state (flightsOfInterest)
+    // Close the edit modal
+    setIsEditModalOpen(false);
+  };
 
   return (
     <>
@@ -31,24 +62,38 @@ export default function FlightList() {
               <FlightNumber>{flight.flight_iata}</FlightNumber>
               <FlightDetails>
                 <FlightDetailLabel>DATE</FlightDetailLabel>
-                {new Date(flight.scheduled_date).getFullYear()}-
-                {new Date(flight.scheduled_date).getMonth() + 1}-{" "}
-                {new Date(flight.scheduled_date).getDate()}{" "}
+                <FlightDetailData>
+                  {new Date(flight.scheduled_date).getFullYear()}-
+                  {new Date(flight.scheduled_date).getMonth() + 1}-{" "}
+                  {new Date(flight.scheduled_date).getDate()}{" "}
+                </FlightDetailData>
               </FlightDetails>
               <FlightDetails>
                 <FlightDetailLabel>FROM</FlightDetailLabel>
-                {flight.departure}
+                <FlightDetailData>{flight.departure}</FlightDetailData>
               </FlightDetails>
               <FlightDetails>
                 <FlightDetailLabel>TO</FlightDetailLabel>
-                {flight.arrival}
+                <FlightDetailData>{flight.arrival}</FlightDetailData>
               </FlightDetails>
+              <IconButton
+                onClick={() => handleEditClick(flight)}
+                aria-label="edit flight"
+              >
+                <Pencil />
+              </IconButton>
             </StyledFlightInfo>
             <Separator />
           </FlightRow>
         ))}
       </ScheduledList>
       <Button onClick={handleAddFlightClick}>Add Flight</Button>
+      {isEditModalOpen && (
+        <EditFlightModal
+          selectedFlight={selectedFlight}
+          onSave={handleEditModalSave}
+        />
+      )}
     </>
   );
 }
@@ -121,9 +166,13 @@ const FlightDetailLabel = styled.div`
 `;
 
 const FlightDetails = styled.div`
+  display: flex;
+  flex-direction: column; /* Stack the label and data vertically */
   text-align: center;
   font-size: 0.6rem;
+  margin: 0 10px; /* Add margin for horizontal spacing */
 `;
+
 const Button = styled.button`
   display: flex;
   align-items: center;
@@ -154,4 +203,15 @@ const Button = styled.button`
   &:active {
     box-shadow: none;
   }
+`;
+
+const FlightDetailData = styled.div`
+  margin-top: 4px; /* Adjust the margin as needed for vertical spacing */
+`;
+
+const IconButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 `;
