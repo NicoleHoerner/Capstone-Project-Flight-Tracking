@@ -21,12 +21,12 @@ export default function AddFlightForm() {
 
   const router = useRouter();
 
-  const [isFocused, setIsFocused] = useState({});
+  const [$isFocused, set$isFocused] = useState({});
 
-  const handleFocus = (event) => setIsFocused({ [event.target.name]: true });
+  const handleFocus = (event) => set$isFocused({ [event.target.name]: true });
   const handleBlur = (event) => {
     console.log("Blur event fired:", event.target.value);
-    setIsFocused({ [event.target.name]: false });
+    set$isFocused({ [event.target.name]: false });
   };
   function handleSubmit(event) {
     event.preventDefault();
@@ -45,7 +45,7 @@ export default function AddFlightForm() {
           <InputBox>
             <InputLabel
               htmlFor="flight_iata"
-              isFocused={isFocused["flight_iata"]}
+              $isFocused={$isFocused["flight_iata"]}
             >
               Flight #
             </InputLabel>
@@ -56,7 +56,7 @@ export default function AddFlightForm() {
               required
               maxLength="7"
               pattern="^[A-Za-z]{2,3}[0-9]{1,4}[A-Za-z]?$"
-              isFocused={isFocused["flight_iata"]}
+              $isFocused={$isFocused["flight_iata"]}
               onFocus={handleFocus}
               onBlur={(event) => {
                 handleBlur(event);
@@ -77,7 +77,7 @@ export default function AddFlightForm() {
           <InputBox>
             <InputLabel
               htmlFor="scheduled_date"
-              isFocused={isFocused["scheduled_date"]}
+              $isFocused={$isFocused["scheduled_date"]}
             >
               Date of Flight
             </InputLabel>
@@ -86,33 +86,36 @@ export default function AddFlightForm() {
               type="date"
               name="scheduled_date"
               required
-              isFocused={isFocused["scheduled_date"]}
+              $isFocused={$isFocused["scheduled_date"]}
               onFocus={handleFocus}
               onBlur={handleBlur}
             />
           </InputBox>
           <InputBox>
-            <InputLabel htmlFor="departure" isFocused={isFocused["departure"]}>
+            <InputLabel
+              htmlFor="departure"
+              $isFocused={$isFocused["departure"]}
+            >
               Departure
             </InputLabel>
             <InputField
               id="departure"
               type="text"
               name="departure"
-              isFocused={isFocused["departure"]}
+              $isFocused={$isFocused["departure"]}
               onFocus={handleFocus}
               onBlur={handleBlur}
             />
           </InputBox>
           <InputBox>
-            <InputLabel htmlFor="arrival" isFocused={isFocused["arrival"]}>
+            <InputLabel htmlFor="arrival" $isFocused={$isFocused["arrival"]}>
               Arrival
             </InputLabel>
             <InputField
               id="arrival"
               type="text"
               name="arrival"
-              isFocused={isFocused["arrival"]}
+              $isFocused={$isFocused["arrival"]}
               onFocus={handleFocus}
               onBlur={handleBlur}
             />
@@ -147,10 +150,10 @@ export default function AddFlightForm() {
 
   const router = useRouter();
 
-  const [isFocused, setIsFocused] = useState({});
+  const [$isFocused, set$isFocused] = useState({});
 
-  const handleFocus = (event) => setIsFocused({ [event.target.name]: true });
-  const handleBlur = (event) => setIsFocused({ [event.target.name]: false });
+  const handleFocus = (event) => set$isFocused({ [event.target.name]: true });
+  const handleBlur = (event) => set$isFocused({ [event.target.name]: false });
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -169,7 +172,7 @@ export default function AddFlightForm() {
         <Card>
           <StyledHeading>Schedule your next flight</StyledHeading>
           <InputBox>
-            <InputLabel htmlFor="flight_iata" isFocused={isFocused}>
+            <InputLabel htmlFor="flight_iata" $isFocused={$isFocused}>
               Flight #
             </InputLabel>
             <InputField
@@ -199,7 +202,7 @@ export default function AddFlightForm() {
           <InputBox>
             <InputLabel
               htmlFor="scheduled_date"
-              isFocused={isFocused["scheduled_date"]}
+              $isFocused={$isFocused["scheduled_date"]}
             >
               Date of Flight
             </InputLabel>
@@ -208,33 +211,33 @@ export default function AddFlightForm() {
               type="date"
               name="scheduled_date"
               required
-              isFocused={isFocused["scheduled_date"]}
+              $isFocused={$isFocused["scheduled_date"]}
               onFocus={handleFocus}
               onBlur={handleBlur}
             />
           </InputBox>
           <InputBox>
-            <InputLabel htmlFor="departure" isFocused={isFocused["departure"]}>
+            <InputLabel htmlFor="departure" $isFocused={$isFocused["departure"]}>
               Departure
             </InputLabel>
             <InputField
               id="departure"
               type="text"
               name="departure"
-              isFocused={isFocused["departure"]}
+              $isFocused={$isFocused["departure"]}
               onFocus={handleFocus}
               onBlur={handleBlur}
             />
           </InputBox>
           <InputBox>
-            <InputLabel htmlFor="arrival" isFocused={isFocused["arrival"]}>
+            <InputLabel htmlFor="arrival" $isFocused={$isFocused["arrival"]}>
               Arrival
             </InputLabel>
             <InputField
               id="arrival"
               type="text"
               name="arrival"
-              isFocused={isFocused["arrival"]}
+              $isFocused={$isFocused["arrival"]}
               onFocus={handleFocus}
               onBlur={handleBlur}
             />
