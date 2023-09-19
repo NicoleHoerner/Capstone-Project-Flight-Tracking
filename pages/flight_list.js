@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Pencil from "../components/Icons/EditIcon";
+import TrashCan from "../components/Icons/DeleteIcon";
 import EditFlightModal from "../components/Modal/EditFlightModal";
+import DeleteFlightModal from "../components/Modal/DeleteFlightModal";
 import { FlightNumber } from "../components/StyledComponents/StyledFlightNumber";
 import { flights } from "../data/septemberFlights";
 import { useRouter } from "next/router";
@@ -58,6 +60,27 @@ export default function FlightList() {
     setIsEditModalOpen(false);
   };
 
+  const [flightToDelete, setFlightToDelete] = useState(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const handleDeleteClick = (flight) => {
+    setFlightToDelete(flight);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleFlightDeletion = (flightToDelete) => {
+    const updatedFlights = flightsOfInterest.filter(
+      (flight) =>
+        flight.flight_iata !== flightToDelete.flight_iata ||
+        flight.scheduled_date !== flightToDelete.scheduled_date
+    );
+
+    // Update the state and local storage
+    setFlightsOfInterest(updatedFlights);
+
+    // Show a confirmation alert
+    alert("Flight was deleted");
+  };
+
   return (
     <>
       <H1>Simple Tracking.</H1>
@@ -93,6 +116,12 @@ export default function FlightList() {
               >
                 <Pencil />
               </IconButton>
+              <IconButton
+                onClick={() => handleDeleteClick(flight)}
+                aria-label="delete flight"
+              >
+                <TrashCan />
+              </IconButton>
             </StyledFlightInfo>
             <Separator />
           </FlightRow>
@@ -104,6 +133,18 @@ export default function FlightList() {
           onClose={() => setIsEditModalOpen(false)}
           selectedFlight={selectedFlight}
           onSave={handleEditModalSave}
+        />
+      )}
+      {isDeleteModalOpen && (
+        <DeleteFlightModal
+          flight={flightToDelete}
+          onCancel={() => {
+            setIsDeleteModalOpen(false);
+            setFlightToDelete(null);
+          }}
+          onDelete={() => {
+            handleFlightDeletion(flightToDelete);
+          }}
         />
       )}
     </>
