@@ -22,13 +22,7 @@ export default function DeleteFlightModal({ flight, onCancel, onDelete }) {
         </ModalBody>
         <ModalFooter>
           <CancelButton onClick={onCancel}>Cancel</CancelButton>
-          <DeleteButton
-            onClick={() => {
-              handleFlightDeletion(flight);
-            }}
-          >
-            Delete
-          </DeleteButton>
+          <DeleteButton onClick={onDelete}>Delete</DeleteButton>
         </ModalFooter>
       </ModalContainer>
     </ModalOverlay>

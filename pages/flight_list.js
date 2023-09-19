@@ -144,6 +144,7 @@ export default function FlightList() {
           }}
           onDelete={() => {
             handleFlightDeletion(flightToDelete);
+            setIsDeleteModalOpen(false);
           }}
         />
       )}
