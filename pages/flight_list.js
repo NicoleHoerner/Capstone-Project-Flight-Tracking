@@ -42,13 +42,10 @@ export default function FlightList() {
     setSelectedFlight(selectedFlight);
   };
 
-  const handleEditModalSave = (editedFlightData) => {
+  const handleEditModalSave = (iata, date, editedFlightData) => {
     // Update the flight data in main state (flightsOfInterest)
     const updatedFlights = flightsOfInterest.map((flight) => {
-      if (
-        flight.flight_iata === editedFlightData.flight_iata &&
-        flight.scheduled_date === editedFlightData.scheduled_date
-      ) {
+      if (flight.flight_iata === iata && flight.scheduled_date === date) {
         return { ...flight, ...editedFlightData };
       }
       return flight;
