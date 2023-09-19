@@ -1,8 +1,13 @@
 import styled from "styled-components";
+import Pencil from "../components/Icons/EditIcon";
+import TrashCan from "../components/Icons/DeleteIcon";
+import EditFlightModal from "../components/Modal/EditFlightModal";
+import DeleteFlightModal from "../components/Modal/DeleteFlightModal";
 import { FlightNumber } from "../components/StyledComponents/StyledFlightNumber";
 import { flights } from "../data/septemberFlights";
 import { useRouter } from "next/router";
 import useLocalStorageState from "use-local-storage-state";
+import { useState } from "react";
 
 export default function FlightList() {
   const router = useRouter();
@@ -12,9 +17,66 @@ export default function FlightList() {
     router.push("/add-flight");
   };
 
-  const [flightsOfInterest] = useLocalStorageState("flightsInfo", {
-    defaultValue: flights,
-  });
+  const [flightsOfInterest, setFlightsOfInterest] = useLocalStorageState(
+    "flightsInfo",
+    {
+      defaultValue: flights,
+    }
+  );
+
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [selectedFlight, setSelectedFlight] = useState(null);
+
+  const handleEditClick = (flight) => {
+    // Access the flight data from local storage
+    const storedFlights = flightsOfInterest;
+
+    // Find the specific flight that corresponds to the clicked IconButton
+    const selectedFlight = storedFlights.find(
+      (storedFlight) =>
+        storedFlight.flight_iata === flight.flight_iata &&
+        storedFlight.scheduled_date === flight.scheduled_date
+    );
+
+    setIsEditModalOpen(true);
+    setSelectedFlight(selectedFlight);
+  };
+
+  const handleEditModalSave = (iata, date, editedFlightData) => {
+    // Update the flight data in main state (flightsOfInterest)
+    const updatedFlights = flightsOfInterest.map((flight) => {
+      if (flight.flight_iata === iata && flight.scheduled_date === date) {
+        return { ...flight, ...editedFlightData };
+      }
+      return flight;
+    });
+
+    setFlightsOfInterest(updatedFlights);
+
+    // Close the edit modal
+    setIsEditModalOpen(false);
+  };
+
+  const [flightToDelete, setFlightToDelete] = useState(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const handleDeleteClick = (flight) => {
+    setFlightToDelete(flight);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleFlightDeletion = (flightToDelete) => {
+    const updatedFlights = flightsOfInterest.filter(
+      (flight) =>
+        flight.flight_iata !== flightToDelete.flight_iata ||
+        flight.scheduled_date !== flightToDelete.scheduled_date
+    );
+
+    // Update the state and local storage
+    setFlightsOfInterest(updatedFlights);
+
+    // Show a confirmation alert
+    alert("Flight was deleted");
+  };
 
   return (
     <>
@@ -31,24 +93,58 @@ export default function FlightList() {
               <FlightNumber>{flight.flight_iata}</FlightNumber>
               <FlightDetails>
                 <FlightDetailLabel>DATE</FlightDetailLabel>
-                {new Date(flight.scheduled_date).getFullYear()}-
-                {new Date(flight.scheduled_date).getMonth() + 1}-{" "}
-                {new Date(flight.scheduled_date).getDate()}{" "}
+                <FlightDetailData>
+                  {new Date(flight.scheduled_date).getFullYear()}-
+                  {new Date(flight.scheduled_date).getMonth() + 1}-{" "}
+                  {new Date(flight.scheduled_date).getDate()}{" "}
+                </FlightDetailData>
               </FlightDetails>
               <FlightDetails>
                 <FlightDetailLabel>FROM</FlightDetailLabel>
-                {flight.departure}
+                <FlightDetailData>{flight.departure}</FlightDetailData>
               </FlightDetails>
               <FlightDetails>
                 <FlightDetailLabel>TO</FlightDetailLabel>
-                {flight.arrival}
+                <FlightDetailData>{flight.arrival}</FlightDetailData>
               </FlightDetails>
+              <IconButton
+                onClick={() => handleEditClick(flight)}
+                aria-label="edit flight"
+              >
+                <Pencil />
+              </IconButton>
+              <IconButton
+                onClick={() => handleDeleteClick(flight)}
+                aria-label="delete flight"
+              >
+                <TrashCan />
+              </IconButton>
             </StyledFlightInfo>
             <Separator />
           </FlightRow>
         ))}
       </ScheduledList>
       <Button onClick={handleAddFlightClick}>Add Flight</Button>
+      {isEditModalOpen && (
+        <EditFlightModal
+          onClose={() => setIsEditModalOpen(false)}
+          selectedFlight={selectedFlight}
+          onSave={handleEditModalSave}
+        />
+      )}
+      {isDeleteModalOpen && (
+        <DeleteFlightModal
+          flight={flightToDelete}
+          onCancel={() => {
+            setIsDeleteModalOpen(false);
+            setFlightToDelete(null);
+          }}
+          onDelete={() => {
+            handleFlightDeletion(flightToDelete);
+            setIsDeleteModalOpen(false);
+          }}
+        />
+      )}
     </>
   );
 }
@@ -121,9 +217,13 @@ const FlightDetailLabel = styled.div`
 `;
 
 const FlightDetails = styled.div`
+  display: flex;
+  flex-direction: column; /* Stack the label and data vertically */
   text-align: center;
   font-size: 0.6rem;
+  margin: 0 10px; /* Add margin for horizontal spacing */
 `;
+
 const Button = styled.button`
   display: flex;
   align-items: center;
@@ -154,4 +254,15 @@ const Button = styled.button`
   &:active {
     box-shadow: none;
   }
+`;
+
+const FlightDetailData = styled.div`
+  margin-top: 4px; /* Adjust the margin as needed for vertical spacing */
+`;
+
+const IconButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 `;

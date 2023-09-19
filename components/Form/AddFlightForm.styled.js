@@ -69,19 +69,21 @@ export const InputLabel = styled.label`
   letter-spacing: 3px;
   border-radius: 8px;
   transform: ${(props) =>
-    props.isFocused || props.isValid
+    props.$isFocused || props.$isValid
       ? "translateX(113px) translateY(-15px)"
       : "translateY(-4px)"};
   font-size: ${(props) =>
-    props.isFocused || props.isValid ? "0.8em" : "12px"};
+    props.$isFocused || props.$isValid ? "0.8em" : "12px"};
   padding: ${(props) =>
-    props.isFocused || props.isValid ? "5px 10px" : "10px"};
+    props.$isFocused || props.$isValid ? "5px 10px" : "10px"};
   background: ${(props) =>
-    props.isFocused || props.isValid ? "#000" : "transparent"};
+    props.$isFocused || props.$isValid ? "#000" : "transparent"};
   letter-spacing: ${(props) =>
-    props.isFocused || props.isValid ? "0.2em" : "3px"};
-  color: ${(props) => (props.isFocused || props.isValid ? "#fff" : "#cbd5e1")};
-  border: ${(props) => (props.isFocused || props.isValid ? "2px" : "initial")};
+    props.$isFocused || props.$isValid ? "0.2em" : "3px"};
+  color: ${(props) =>
+    props.$isFocused || props.$isValid ? "#fff" : "#cbd5e1"};
+  border: ${(props) =>
+    props.$isFocused || props.$isValid ? "2px" : "initial"};
 `;
 
 export const InputField = styled.input`
@@ -92,7 +94,7 @@ export const InputField = styled.input`
   padding: 8px;
   border: 2px solid
     ${(props) =>
-      props.isFocused ? "#cbd5e1" : props.isValid ? "#cbd5e1" : "initial"};
+      props.$isFocused ? "#cbd5e1" : props.$isValid ? "#cbd5e1" : "initial"};
   border-radius: 8px;
   &:focus {
     border-color: #cbd5e1;
