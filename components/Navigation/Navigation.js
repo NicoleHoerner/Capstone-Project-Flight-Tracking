@@ -10,7 +10,7 @@ import {
 
 const Navigation = ({ onClose }) => {
   return (
-    <StyledNavWrapper>
+    <StyledNavWrapper data-testid="navigation">
       <StyledCloseIcon>
         <Image
           src={closeIcon}

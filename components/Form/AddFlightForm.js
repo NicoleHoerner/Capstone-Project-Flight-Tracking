@@ -116,7 +116,9 @@ export default function AddFlightForm() {
               onBlur={handleBlur}
             />
           </InputBox>
-          <StyledAddButton type="submit">ADD FLIGHT</StyledAddButton>
+          <StyledAddButton type="submit" aria-label="add flight">
+            ADD FLIGHT
+          </StyledAddButton>
         </Card>
       </StyledForm>
     </>
