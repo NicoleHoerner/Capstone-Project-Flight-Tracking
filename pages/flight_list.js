@@ -81,7 +81,7 @@ export default function FlightList() {
   return (
     <>
       <H1>Simple Tracking.</H1>
-      <H2>
+      <H2 aria-label="This month's flights">
         This month&apos;s <StyledWord>flights</StyledWord>.
       </H2>
       <H3>Scheduled Flights</H3>

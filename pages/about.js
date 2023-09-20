@@ -4,7 +4,7 @@ export default function AboutPage() {
   return (
     <>
       <H1>Simple Tracking.</H1>
-      <H2>
+      <H2 aria-label="About this App">
         About this <StyledWord>App</StyledWord>.
       </H2>
       <H3>Purpose of this flight tracking app</H3>

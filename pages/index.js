@@ -25,7 +25,9 @@ export default function Home() {
       <Heading>🐧Penguin Capstone Template🐧</Heading>
       {flights.length > 0 && (
         <FlightInfo>
-          <StyledH2>Flight Information</StyledH2>
+          <StyledH2 aria-label="Flight Information">
+            Flight Information
+          </StyledH2>
           <FlightList>
             {flights.map((flight) => (
               <FlightItem key={flight.flight.number}>
