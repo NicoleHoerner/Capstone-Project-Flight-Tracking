@@ -2,6 +2,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import { FlightNumber } from "../components/StyledComponents/StyledFlightNumber";
 import { useEffect, useState } from "react";
+import useFlightStore from "../store/flightStore";
 
 export default function Home() {
   const [flights, setFlights] = useState([]);
@@ -14,6 +15,11 @@ export default function Home() {
     getFlights();
   }, []);
 
+  const { flightsForToday } = useFlightStore();
+  const flightNumbersForToday = flightsForToday.map(
+    (flight) => flight.flight_iata
+  );
+
   return (
     <>
       <Head>
@@ -23,6 +29,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Heading>🐧Penguin Capstone Template🐧</Heading>
+      {flightNumbersForToday.length > 0 && (
+        <FlightInfo>
+          <StyledH2 aria-label="Flights Scheduled for Today">
+            Flights Scheduled for Today
+          </StyledH2>
+          <FlightList>
+            {flightNumbersForToday.map((flightNumber) => (
+              <FlightItem key={flightNumber}>
+                <p>
+                  <FlightNumber>{flightNumber}</FlightNumber>
+                </p>
+              </FlightItem>
+            ))}
+          </FlightList>
+        </FlightInfo>
+      )}
       {flights.length > 0 && (
         <FlightInfo>
           <StyledH2 aria-label="Flight Information">

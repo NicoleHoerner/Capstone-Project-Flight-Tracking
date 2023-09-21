@@ -7,7 +7,8 @@ import { FlightNumber } from "../components/StyledComponents/StyledFlightNumber"
 import { flights } from "../data/septemberFlights";
 import { useRouter } from "next/router";
 import useLocalStorageState from "use-local-storage-state";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import useFlightStore from "../store/flightStore";
 
 export default function FlightList() {
   const router = useRouter();
@@ -77,6 +78,23 @@ export default function FlightList() {
     // Show a confirmation alert
     alert("Flight was deleted");
   };
+
+  const { setFlightsForToday } = useFlightStore();
+  useEffect(() => {
+    const today = new Date();
+
+    const todayFlights = flightsOfInterest.filter((flight) => {
+      const flightDate = new Date(flight.scheduled_date);
+      return (
+        flightDate.getDate() === today.getDate() &&
+        flightDate.getMonth() === today.getMonth() &&
+        flightDate.getFullYear() === today.getFullYear()
+      );
+    });
+
+    setFlightsForToday(todayFlights);
+    console.log("Flights for today:", todayFlights);
+  }, [flightsOfInterest, setFlightsForToday]);
 
   return (
     <>
