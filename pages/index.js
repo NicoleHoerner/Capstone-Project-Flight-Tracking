@@ -20,6 +20,16 @@ export default function Home() {
     (flight) => flight.flight_iata
   );
 
+  const [flightDataForToday, setFlightDataForToday] = useState([]);
+  useEffect(() => {
+    async function getFlightsDataForToday() {
+      const response = await fetch("/api/hello");
+      const data = await response.json();
+      setFlightDataForToday(data.data.data);
+    }
+    getFlightsDataForToday();
+  }, []);
+
   return (
     <>
       <Head>
@@ -28,7 +38,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Heading>🐧Penguin Capstone Template🐧</Heading>
+      <Heading>Simple Tracking.</Heading>
+      <H2 aria-label="This month's flights">
+        <StyledWord>Miguel&apos;s</StyledWord> Flight Status.
+      </H2>
       {flightNumbersForToday.length > 0 && (
         <FlightInfo>
           <StyledH2 aria-label="Flights Scheduled for Today">
@@ -70,9 +83,6 @@ export default function Home() {
   );
 }
 
-const Heading = styled.h1`
-  text-align: center;
-`;
 const FlightInfo = styled.section`
   background-color: #7cb9e8;
   padding: 16px;
@@ -95,4 +105,31 @@ const FlightList = styled.ul`
 
 const FlightItem = styled.li`
   margin: 40px 0;
+`;
+
+const Heading = styled.h1`
+  margin: 5px auto;
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  max-width: 600px;
+  position: relative;
+  z-index: -1;
+`;
+
+const H2 = styled.h2`
+  margin: auto;
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.3rem;
+  max-width: 600px;
+  position: relative;
+  padding-left: 113px;
+  z-index: -1;
+`;
+
+const StyledWord = styled.span`
+  color: #3951a3;
 `;

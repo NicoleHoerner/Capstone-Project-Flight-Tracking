@@ -1,8 +1,7 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Navigation from "./Navigation";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter, Routes, Route } from "react-router-dom";
 
 test("renders Navigation", () => {
   render(<Navigation />);
