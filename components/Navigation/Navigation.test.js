@@ -17,17 +17,6 @@ test("clicking on the close icon calls the onClose function", () => {
 
 test("navigation links work", () => {
   render(<Navigation />);
-  const dashboardLink = screen.getByRole("link", { name: "Dashboard" });
-  const flightsLink = screen.getByRole("link", { name: "Flights" });
-  const aboutLink = screen.getByRole("link", { name: "About" });
-
-  userEvent.click(dashboardLink);
-  userEvent.click(flightsLink);
-  userEvent.click(aboutLink);
-});
-
-test("navigation links work", () => {
-  render(<Navigation />);
 
   const dashboardLink = screen.getByText("Dashboard");
   const flightsLink = screen.getByText("Flights");
