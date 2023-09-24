@@ -54,6 +54,10 @@ export default function FlightInfo({ flight }) {
           Check realtime flight
         </Button>
       )}
+      {additionalFlightInfo &&
+        additionalFlightInfo.flight_status === "active" && (
+          <StatusMessage>MIGUEL is airborne</StatusMessage>
+        )}
     </FlightItem>
   );
 }
@@ -83,11 +87,6 @@ const FlightDetailInfo = styled.div`
   color: #eee7de;
   margin-bottom: 5px;
 `;
-
-/* const Seperator = styled.hr`
-  background-color: red;
-  margin: 20px 0;
-`; */
 
 const VerticalSeperator = styled.div`
   width: 1px;
@@ -126,4 +125,9 @@ const Button = styled.button`
   &:active {
     box-shadow: none;
   }
+`;
+
+const StatusMessage = styled.div`
+  color: blue;
+  font-weight: bold;
 `;
