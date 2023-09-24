@@ -11,7 +11,7 @@ export const StyledMenuIcon = styled.span`
   color: #394855;
   width: 30px;
   height: 30px;
-  margin-top: 32px;
-  margin-left: 32px;
+  margin-top: 15px;
+  margin-left: 15px;
   cursor: pointer;
 `;

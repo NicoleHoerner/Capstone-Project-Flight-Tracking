@@ -34,9 +34,9 @@ export default function Home() {
       </H2>
       {todaysFlights.length > 0 && (
         <StyledFlightInfo>
-          <StyledH2 aria-label="Flight Information">
+          <StyledH3 aria-label="Flight Information">
             Flight Information
-          </StyledH2>
+          </StyledH3>
           <FlightList>
             {todaysFlights.map((flight) => (
               <FlightInfo key={flight.flight_iata} flight={flight} />
@@ -49,14 +49,14 @@ export default function Home() {
 }
 
 const StyledFlightInfo = styled.section`
-  background-color: #7cb9e8;
+  background-color: #ecf0f3;
   padding: 16px;
   margin-top: 16px;
 `;
 
-const StyledH2 = styled.h2`
+const StyledH3 = styled.h3`
   font-size: 1.2rem;
-  background-color: #eee7de;
+  background-color: #cbd5e1;
   width: max-content;
   border: none;
   border-radius: 10px;
@@ -92,7 +92,7 @@ const H2 = styled.h2`
 `;
 
 const StyledWord = styled.span`
-  color: #3951a3;
+  color: #7cb9e8;
 `;
 
 /* import Head from "next/head";

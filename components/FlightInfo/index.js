@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Aircraft from "../Icons/AircraftIcon";
+import AircraftFilled from "../Icons/AircraftIconFilled";
 import { useState } from "react";
 import { FlightNumber } from "@/components/StyledComponents/StyledFlightNumber";
 
@@ -21,12 +22,12 @@ export default function FlightInfo({ flight }) {
 
   return (
     <FlightItem>
-      <p>
+      <section>
         <FlightNumber>{flight.flight_iata}</FlightNumber> Airline:{" "}
         {additionalFlightInfo
           ? additionalFlightInfo.airline.name
           : flight.flight_iata}
-      </p>
+      </section>
       {additionalFlightInfo ? (
         <StyledFlightInfo>
           <FlightDetails>
@@ -37,14 +38,10 @@ export default function FlightInfo({ flight }) {
             <FlightDetailInfo>FROM </FlightDetailInfo>
             {additionalFlightInfo.departure.airport}
           </FlightDetails>
-          <VerticalSeperator />
+          <AircraftFilled />
           <FlightDetails>
             <FlightDetailInfo>TO</FlightDetailInfo>
             {additionalFlightInfo.arrival.airport}
-          </FlightDetails>
-          <FlightDetails>
-            <FlightDetailInfo>Flight Status</FlightDetailInfo>
-            {additionalFlightInfo.flight_status}
           </FlightDetails>
         </StyledFlightInfo>
       ) : (
@@ -55,6 +52,16 @@ export default function FlightInfo({ flight }) {
           Check realtime flight
         </Button>
       )}
+      {
+        <FlightDetailStatus>
+          Flight Status{" "}
+          <StatusInfo>
+            {additionalFlightInfo
+              ? additionalFlightInfo.flight_status
+              : "no status available"}
+          </StatusInfo>
+        </FlightDetailStatus>
+      }
       {additionalFlightInfo &&
         additionalFlightInfo.flight_status === "active" && (
           <StatusMessage>
@@ -75,6 +82,7 @@ const StyledFlightInfo = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: 15px;
 `;
 
 const FlightDetails = styled.div`
@@ -85,9 +93,26 @@ const FlightDetails = styled.div`
   margin: 0 10px; /* Add margin for horizontal spacing */
 `;
 
+const FlightDetailStatus = styled.div`
+  font-size: 0.8rem;
+  opacity: 50%;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+`;
+
+const StatusInfo = styled.span`
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #7cb9e8;
+  margin-left: 5px;
+  font-weight: bold;
+`;
+
 const FlightDetailInfo = styled.div`
   font-size: 0.6rem;
-  color: #eee7de;
+  color: #000000;
+  opacity: 50%;
   margin-bottom: 5px;
 `;
 
@@ -134,7 +159,7 @@ const StatusMessage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: blue;
+  color: #7cb9e8;
   font-weight: bold;
   margin-bottom: 5px;
   margin-top: 15px;

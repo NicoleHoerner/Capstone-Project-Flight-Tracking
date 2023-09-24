@@ -173,7 +173,7 @@ const H2 = styled.h2`
 `;
 
 const StyledWord = styled.span`
-  color: #3951a3;
+  color: #7cb9e8;
 `;
 const H3 = styled.h3`
   text-align: center;
@@ -213,7 +213,7 @@ const Separator = styled.div`
 
 const FlightDetailLabel = styled.div`
   font-size: 0.6rem;
-  color: #eee7de;
+  color: #e0e8ef;
 `;
 
 const FlightDetails = styled.div`
