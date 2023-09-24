@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Aircraft from "../Icons/AircraftIcon";
 import { useState } from "react";
 import { FlightNumber } from "@/components/StyledComponents/StyledFlightNumber";
 
@@ -56,7 +57,9 @@ export default function FlightInfo({ flight }) {
       )}
       {additionalFlightInfo &&
         additionalFlightInfo.flight_status === "active" && (
-          <StatusMessage>MIGUEL is airborne</StatusMessage>
+          <StatusMessage>
+            <Aircraft /> MIGUEL IS AIRBORNE <Aircraft />
+          </StatusMessage>
         )}
     </FlightItem>
   );
@@ -128,6 +131,11 @@ const Button = styled.button`
 `;
 
 const StatusMessage = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: blue;
   font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 15px;
 `;
