@@ -95,4 +95,10 @@ export const flights = [
     departure: "UIO",
     arrival: "PTY",
   },
+  {
+    flight_iata: "CM439",
+    scheduled_date: "2023-09-25",
+    departure: "EZE Buenos Aires",
+    arrival: "PTY Panama",
+  },
 ];

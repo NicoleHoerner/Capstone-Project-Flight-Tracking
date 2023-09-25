@@ -94,14 +94,14 @@ export default function FlightList() {
                   {new Date(flight.scheduled_date).getDate()}{" "}
                 </FlightDetailData>
               </FlightDetails>
-              <FlightDetails>
+              <FlightDetailsFrom>
                 <FlightDetailLabel>FROM</FlightDetailLabel>
                 <FlightDetailData>{flight.departure}</FlightDetailData>
-              </FlightDetails>
-              <FlightDetails>
+              </FlightDetailsFrom>
+              <FlightDetailsTo>
                 <FlightDetailLabel>TO</FlightDetailLabel>
                 <FlightDetailData>{flight.arrival}</FlightDetailData>
-              </FlightDetails>
+              </FlightDetailsTo>
               <IconButton
                 onClick={() => handleEditClick(flight)}
                 aria-label="edit flight"
@@ -213,6 +213,21 @@ const FlightDetailLabel = styled.div`
 `;
 
 const FlightDetails = styled.div`
+  display: flex;
+  flex-direction: column; /* Stack the label and data vertically */
+  text-align: center;
+  font-size: 0.6rem;
+  margin: 0 10px; /* Add margin for horizontal spacing */
+`;
+
+const FlightDetailsFrom = styled.div`
+  display: flex;
+  flex-direction: column; /* Stack the label and data vertically */
+  text-align: center;
+  font-size: 0.6rem;
+  margin: 0 4px; /* Add margin for horizontal spacing */
+`;
+const FlightDetailsTo = styled.div`
   display: flex;
   flex-direction: column; /* Stack the label and data vertically */
   text-align: center;
