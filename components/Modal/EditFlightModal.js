@@ -68,6 +68,7 @@ export default function EditFlightModal({ onClose, selectedFlight, onSave }) {
               defaultValue={flightIata}
               onChange={handleFlightIataChange}
             />
+            <InputLabel htmlFor="scheduled_date">Scheduled Date</InputLabel>
             <InputField
               type="date"
               id="scheduled_date"
@@ -75,6 +76,7 @@ export default function EditFlightModal({ onClose, selectedFlight, onSave }) {
               defaultValue={scheduledDate}
               onChange={handleScheduledDateChange}
             />
+            <InputLabel htmlFor="departure">Departure Airport</InputLabel>
             <InputField
               type="text"
               id="departure"
@@ -82,6 +84,7 @@ export default function EditFlightModal({ onClose, selectedFlight, onSave }) {
               defaultValue={departure}
               onChange={handleDepartureChange}
             />
+            <InputLabel htmlFor="arrival">Arrival Airport</InputLabel>
             <InputField
               type="text"
               id="arrival"
