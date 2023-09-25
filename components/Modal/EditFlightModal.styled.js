@@ -44,7 +44,7 @@ export const CancelButton = styled.button`
   color: white;
   border: none;
   padding: 8px 16px;
-  border-radius: 4px;
+  border-radius: 100px;
   margin-left: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -59,7 +59,7 @@ export const SubmitButton = styled.button`
   color: white;
   border: none;
   padding: 8px 16px;
-  border-radius: 4px;
+  border-radius: 100px;
   margin-left: 8px;
   cursor: pointer;
   transition: background-color 0.3s;

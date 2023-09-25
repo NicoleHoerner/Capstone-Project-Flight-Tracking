@@ -1,18 +1,24 @@
 import Head from "next/head";
 import styled from "styled-components";
-import { FlightNumber } from "../components/StyledComponents/StyledFlightNumber";
-import { useEffect, useState } from "react";
+import { flights } from "@/data/septemberFlights";
+import useLocalStorageState from "use-local-storage-state";
+import FlightInfo from "@/components/FlightInfo";
 
 export default function Home() {
-  const [flights, setFlights] = useState([]);
-  useEffect(() => {
-    async function getFlights() {
-      const response = await fetch("/api/hello");
-      const data = await response.json();
-      setFlights(data.data.data.slice(0, 10));
-    }
-    getFlights();
-  }, []);
+  const [flightsOfInterest, setFlightsOfInterest] = useLocalStorageState(
+    "flightsInfo",
+    { defaultValue: flights }
+  );
+
+  const todaysFlights = flightsOfInterest.filter((flight) => {
+    const flightDate = new Date(flight.scheduled_date);
+    const todaysDate = new Date();
+    return (
+      flightDate.getDate() === todaysDate.getDate() &&
+      flightDate.getMonth() === todaysDate.getMonth() &&
+      flightDate.getFullYear() === todaysDate.getFullYear()
+    );
+  });
 
   return (
     <>
@@ -22,42 +28,35 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Heading>🐧Penguin Capstone Template🐧</Heading>
-      {flights.length > 0 && (
-        <FlightInfo>
-          <StyledH2>Flight Information</StyledH2>
+      <Heading>Simple Tracking.</Heading>
+      <H2 aria-label="This month's flights">
+        <StyledWord>Miguel&apos;s</StyledWord> Flight Status.
+      </H2>
+      {todaysFlights.length > 0 && (
+        <StyledFlightInfo>
+          <StyledH3 aria-label="Flight Information">
+            Flight Information
+          </StyledH3>
           <FlightList>
-            {flights.map((flight) => (
-              <FlightItem key={flight.flight.number}>
-                <p>
-                  <FlightNumber>{flight.flight.iata}</FlightNumber> Airline:{" "}
-                  {flight.airline.name}
-                </p>
-                <p>Flight Date: {flight.flight_date}</p>
-                <p>Departure Airport: {flight.departure.airport}</p>
-                <p>Arrival Airport: {flight.arrival.airport}</p>
-                <p>Flight Status: {flight.flight_status}</p>
-              </FlightItem>
+            {todaysFlights.map((flight) => (
+              <FlightInfo key={flight.flight_iata} flight={flight} />
             ))}
           </FlightList>
-        </FlightInfo>
+        </StyledFlightInfo>
       )}
     </>
   );
 }
 
-const Heading = styled.h1`
-  text-align: center;
-`;
-const FlightInfo = styled.section`
-  background-color: #7cb9e8;
+const StyledFlightInfo = styled.section`
+  background-color: #ecf0f3;
   padding: 16px;
   margin-top: 16px;
 `;
 
-const StyledH2 = styled.h2`
+const StyledH3 = styled.h3`
   font-size: 1.2rem;
-  background-color: #eee7de;
+  background-color: #cbd5e1;
   width: max-content;
   border: none;
   border-radius: 10px;
@@ -69,6 +68,29 @@ const FlightList = styled.ul`
   padding: 0;
 `;
 
-const FlightItem = styled.li`
-  margin: 40px 0;
+const Heading = styled.h1`
+  margin: 5px auto;
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  max-width: 600px;
+  position: relative;
+  z-index: -1;
+`;
+
+const H2 = styled.h2`
+  margin: auto;
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.3rem;
+  max-width: 600px;
+  position: relative;
+  padding-left: 113px;
+  z-index: -1;
+`;
+
+const StyledWord = styled.span`
+  color: #7cb9e8;
 `;

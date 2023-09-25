@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { createPortal } from "react-dom";
 import {
   ModalOverlay,
@@ -8,6 +7,7 @@ import {
   ModalFooter,
   CancelButton,
   DeleteButton,
+  ModalQuestion,
 } from "./DeleteFlightModal.styled";
 
 export default function DeleteFlightModal({ flight, onCancel, onDelete }) {
@@ -16,7 +16,9 @@ export default function DeleteFlightModal({ flight, onCancel, onDelete }) {
       <ModalContainer>
         <ModalHeader>Delete Confirmation</ModalHeader>
         <ModalBody>
-          <p>Are you sure you want to delete this flight?</p>
+          <ModalQuestion>
+            Are you sure you want to delete this flight?
+          </ModalQuestion>
           <p>Flight Number: {flight.flight_iata}</p>
           <p>Date: {flight.scheduled_date}</p>
         </ModalBody>

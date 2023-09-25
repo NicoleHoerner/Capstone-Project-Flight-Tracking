@@ -13,7 +13,6 @@ export default function FlightList() {
   const router = useRouter();
 
   const handleAddFlightClick = () => {
-    // Navigate to the form when the button is clicked
     router.push("/add-flight");
   };
 
@@ -53,7 +52,6 @@ export default function FlightList() {
 
     setFlightsOfInterest(updatedFlights);
 
-    // Close the edit modal
     setIsEditModalOpen(false);
   };
 
@@ -73,15 +71,12 @@ export default function FlightList() {
 
     // Update the state and local storage
     setFlightsOfInterest(updatedFlights);
-
-    // Show a confirmation alert
-    alert("Flight was deleted");
   };
 
   return (
     <>
       <H1>Simple Tracking.</H1>
-      <H2>
+      <H2 aria-label="This month's flights">
         This month&apos;s <StyledWord>flights</StyledWord>.
       </H2>
       <H3>Scheduled Flights</H3>
@@ -99,14 +94,14 @@ export default function FlightList() {
                   {new Date(flight.scheduled_date).getDate()}{" "}
                 </FlightDetailData>
               </FlightDetails>
-              <FlightDetails>
+              <FlightDetailsFrom>
                 <FlightDetailLabel>FROM</FlightDetailLabel>
                 <FlightDetailData>{flight.departure}</FlightDetailData>
-              </FlightDetails>
-              <FlightDetails>
+              </FlightDetailsFrom>
+              <FlightDetailsTo>
                 <FlightDetailLabel>TO</FlightDetailLabel>
                 <FlightDetailData>{flight.arrival}</FlightDetailData>
-              </FlightDetails>
+              </FlightDetailsTo>
               <IconButton
                 onClick={() => handleEditClick(flight)}
                 aria-label="edit flight"
@@ -173,7 +168,7 @@ const H2 = styled.h2`
 `;
 
 const StyledWord = styled.span`
-  color: #3951a3;
+  color: #7cb9e8;
 `;
 const H3 = styled.h3`
   text-align: center;
@@ -181,7 +176,7 @@ const H3 = styled.h3`
   padding: 50px;
   margin: 40px;
   font-size: 1rem;
-  background-color: #eee7de;
+  background-color: #cbd5e1;
   border: none;
   border-radius: 10px;
   padding: 6px 12px;
@@ -213,10 +208,26 @@ const Separator = styled.div`
 
 const FlightDetailLabel = styled.div`
   font-size: 0.6rem;
-  color: #eee7de;
+  color: #000000;
+  opacity: 50%;
 `;
 
 const FlightDetails = styled.div`
+  display: flex;
+  flex-direction: column; /* Stack the label and data vertically */
+  text-align: center;
+  font-size: 0.6rem;
+  margin: 0 10px; /* Add margin for horizontal spacing */
+`;
+
+const FlightDetailsFrom = styled.div`
+  display: flex;
+  flex-direction: column; /* Stack the label and data vertically */
+  text-align: center;
+  font-size: 0.6rem;
+  margin: 0 4px; /* Add margin for horizontal spacing */
+`;
+const FlightDetailsTo = styled.div`
   display: flex;
   flex-direction: column; /* Stack the label and data vertically */
   text-align: center;

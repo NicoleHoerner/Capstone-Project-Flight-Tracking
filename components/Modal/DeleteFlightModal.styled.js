@@ -29,24 +29,34 @@ export const ModalHeader = styled.h2`
 `;
 
 export const ModalBody = styled.div`
-  padding: 16px;
+  padding: 2px;
   margin: 8px;
   text-align: center;
 `;
 
+export const ModalQuestion = styled.div`
+  padding: 2px;
+  margin-bottom: 8px;
+  margin-top: 0px;
+  text-align: center;
+  color: #f8afa6;
+  font-size: 1.2rem;
+  font-weight: bolder;
+`;
+
 export const ModalFooter = styled.div`
   background: white;
-  padding: 16px;
+  padding: 10px;
   display: flex;
   justify-content: center;
 `;
 
 export const CancelButton = styled.button`
-  background: #f8afa6;
+  background: #7cb9e8;
   color: white;
   border: none;
   padding: 8px 16px;
-  border-radius: 40px;
+  border-radius: 100px;
   margin-left: 15px;
   margin-bottom: 12px;
   cursor: pointer;
@@ -58,17 +68,18 @@ export const CancelButton = styled.button`
 `;
 
 export const DeleteButton = styled.button`
-  background: #3951a3;
+  background: #f8afa6;
   color: white;
   border: none;
   padding: 8px 16px;
-  border-radius: 40px;
-  margin-left: 8px;
+  border-radius: 100px;
+  margin-left: 20px;
   margin-right: 15px;
+  margin-bottom: 12px;
   cursor: pointer;
   transition: background-color 0.3s;
 
   &:hover {
-    background: #31447e;
+    background: #ed5947;
   }
 `;

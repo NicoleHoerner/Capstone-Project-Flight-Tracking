@@ -19,6 +19,6 @@ export default createGlobalStyle`
     margin: 0;
     font-family: var(--font-varela);
     color: #112A46;
-    background-color: #7CB9E8;
+    background-color:#ECF0F3;
   }
 `;
