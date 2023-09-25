@@ -181,7 +181,7 @@ const H3 = styled.h3`
   padding: 50px;
   margin: 40px;
   font-size: 1rem;
-  background-color: #eee7de;
+  background-color: #cbd5e1;
   border: none;
   border-radius: 10px;
   padding: 6px 12px;
@@ -213,7 +213,8 @@ const Separator = styled.div`
 
 const FlightDetailLabel = styled.div`
   font-size: 0.6rem;
-  color: #e0e8ef;
+  color: #000000;
+  opacity: 50%;
 `;
 
 const FlightDetails = styled.div`

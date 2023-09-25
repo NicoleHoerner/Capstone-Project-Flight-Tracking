@@ -9,15 +9,10 @@ export default function AboutPage() {
       </H2>
       <H3>Purpose of this flight tracking app</H3>
       <StyledText>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-        amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-        rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-        ipsum dolor sit amet.
+        <StyledLetter>W</StyledLetter>elcome to my personal non-commercial
+        Flight Tracker App – a passion project that was initiated as a capstone
+        project idea as part of our web development bootcamp at neue fische
+        GmbH.
       </StyledText>
     </>
   );
@@ -47,12 +42,12 @@ const H2 = styled.h2`
 `;
 
 const StyledWord = styled.span`
-  color: #3951a3;
+  color: #7cb9e8;
 `;
 const H3 = styled.h3`
   text-align: center;
   font-size: 15px;
-  padding: 50px;
+  padding: 10px;
   margin: 40px;
 `;
 
@@ -60,4 +55,9 @@ const StyledText = styled.p`
   font-size: 14px;
   margin: 20px;
   padding: 0 1em;
+`;
+
+const StyledLetter = styled.span`
+  color: #7cb9e8;
+  font-size: 1.2rem;
 `;

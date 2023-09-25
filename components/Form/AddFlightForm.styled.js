@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const StyledForm = styled.form`
   height: 60px;
   display: flex;
-  background-color: #7cb9e8;
 `;
 
 export const Card = styled.div`
@@ -34,7 +33,7 @@ export const StyledAddButton = styled.button`
   margin-top: 3em;
   margin-bottom: 3em;
   &:hover {
-    background-color: rgb(0, 0, 0);
+    background-color: #7cb9e8;
     color: white;
   }
 `;
@@ -44,7 +43,7 @@ export const StyledHeading = styled.title`
   letter-spacing: 2px;
   display: block;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin-top: 1.5em;
 `;
 
@@ -63,7 +62,7 @@ export const InputLabel = styled.label`
   padding: 10px;
   pointer-events: none;
   font-size: 0.6rem;
-  color: #000;
+  color: #7cb9e8;
   text-transform: uppercase;
   transition: 0.5s;
   letter-spacing: 3px;
