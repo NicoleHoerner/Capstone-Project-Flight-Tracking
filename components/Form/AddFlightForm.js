@@ -23,10 +23,26 @@ export default function AddFlightForm() {
 
   const [isFocused, setisFocused] = useState({});
 
-  const handleFocus = (event) => setisFocused({ [event.target.name]: true });
-  const handleBlur = (event) => {
-    setisFocused({ [event.target.name]: false });
+  const handleFocus = (event) => {
+    const input = event.target;
+    if (input.value) {
+      setisFocused({ [input.name]: true });
+    } else {
+      setisFocused({ [input.name]: true, placeholder: "" });
+    }
   };
+  const handleBlur = (event) => {
+    const input = event.target;
+    if (!input.value) {
+      setisFocused({
+        [input.name]: false,
+        placeholder: "Your placeholder text",
+      });
+    } else {
+      setisFocused({ [input.name]: false });
+    }
+  };
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);

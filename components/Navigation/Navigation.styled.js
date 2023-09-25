@@ -11,8 +11,8 @@ export const StyledNavWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 200px;
-  height: 30vh;
+  min-width: 100px;
+  max-height: 180px;
   display: block;
   border-radius: 0 10% 10% 0;
   z-index: 100;
@@ -30,7 +30,7 @@ export const StyledUl = styled.ul`
 `;
 
 export const StyledNavLink = styled(Link)`
-  padding: 15px 20px;
+  padding: 10px 15px;
   margin: 2px 10px;
   text-decoration: none;
   font-size: 0.8rem;
@@ -55,6 +55,6 @@ export const StyledCloseIcon = styled.span`
   width: 30px;
   height: 30px;
   margin-top: 10px;
-  margin-left: 200px;
+  margin-left: 150px;
   cursor: pointer;
 `;
