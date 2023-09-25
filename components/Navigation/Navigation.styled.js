@@ -11,8 +11,8 @@ export const StyledNavWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
-  height: 50vh;
+  width: 200px;
+  height: 30vh;
   display: block;
   border-radius: 0 10% 10% 0;
   z-index: 100;
@@ -30,10 +30,10 @@ export const StyledUl = styled.ul`
 `;
 
 export const StyledNavLink = styled(Link)`
-  position: relative;
   padding: 15px 20px;
   margin: 2px 10px;
   text-decoration: none;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: left;
