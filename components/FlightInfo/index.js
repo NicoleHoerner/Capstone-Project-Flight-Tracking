@@ -12,7 +12,6 @@ export default function FlightInfo({ flight }) {
     const { data } = await response.json();
     if (data && data[0]?.flight_date === flight.scheduled_date) {
       setAdditionalFlightInfo(data[0]);
-      console.log(data[0]);
     } else {
       setAdditionalFlightInfo(null);
     }
@@ -58,7 +57,7 @@ export default function FlightInfo({ flight }) {
           <StatusInfo>
             {additionalFlightInfo
               ? additionalFlightInfo.flight_status
-              : "no status available"}
+              : "please check and wait for info"}
           </StatusInfo>
         </FlightDetailStatus>
       }
@@ -116,13 +115,6 @@ const FlightDetailInfo = styled.div`
   margin-bottom: 5px;
 `;
 
-const VerticalSeperator = styled.div`
-  width: 1px;
-  height: 50px;
-  background-color: lightgrey;
-  margin: 0 10px; /* Adjust the spacing around the vertical line */
-`;
-
 const Button = styled.button`
   display: flex;
   align-items: center;
@@ -133,7 +125,7 @@ const Button = styled.button`
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.4px;
-  color: #7e97b8;
+  color: #3951a3;
   background-color: #e0e8ef;
   border-style: solid;
   border-width: 2px 2px 2px 2px;
@@ -145,7 +137,7 @@ const Button = styled.button`
   transition: 0.2s;
 
   &:hover {
-    color: #516d91;
+    color: #f8afa6;
     background-color: #e5edf5;
     box-shadow: -2px -1px 8px 0px #ffffff, 2px 1px 8px 0px rgb(95 157 231 / 48%);
   }

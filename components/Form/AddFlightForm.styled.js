@@ -104,7 +104,7 @@ export const InputField = styled.input`
 `;
 
 export const StyledInfoText = styled.span`
-  font-size: 0.6rem; /* Small font size */
+  font-size: 0.6rem;
   color: #999; /* Light grey color */
   margin-top: 4px;
 `;

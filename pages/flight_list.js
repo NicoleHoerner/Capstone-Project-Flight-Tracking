@@ -13,7 +13,6 @@ export default function FlightList() {
   const router = useRouter();
 
   const handleAddFlightClick = () => {
-    // Navigate to the form when the button is clicked
     router.push("/add-flight");
   };
 
@@ -53,7 +52,6 @@ export default function FlightList() {
 
     setFlightsOfInterest(updatedFlights);
 
-    // Close the edit modal
     setIsEditModalOpen(false);
   };
 

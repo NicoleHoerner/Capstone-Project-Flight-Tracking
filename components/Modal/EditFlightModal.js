@@ -92,7 +92,6 @@ export default function EditFlightModal({ onClose, selectedFlight, onSave }) {
               defaultValue={arrival}
               onChange={handleArrivalChange}
             />
-            {/* Add similar input fields for other flight details */}
           </ModalBody>
           <ModalFooter>
             <SubmitButton type="submit">Save Changes</SubmitButton>
