@@ -17,17 +17,20 @@ export default function AboutPage() {
       <StyledText>
         This user-centric platform caters to pilots, travelers, and aviation
         enthusiasts, offering an intuitive space to track flights of interest.
-        Whether you're a pilot, a globe-trotting explorer, or just curious about
-        aviation, this app keeps you sky-bound. Key features? Personalization
-        reigns supreme. Customize your flight tracking experience effortlessly.
-        The dashboard transforms into a real-time flight information hub,
-        pulling data from a trusted API partner. It's like having a virtual
-        window to the skies, with live flight paths and status updates. Plus,
-        your Flight List Overview simplifies your aviation journey. Easily
-        manage your personalized flight list for any designated timeframe. Add,
-        edit, or delete flights at will. And when a flight is scheduled for
-        today, expect detailed information right on your dashboard. This Flight
-        Tracking App is your ticket to staying in sync with the skies.
+        Whether you&apos;re a pilot, a globe-trotting explorer, or just curious
+        about aviation, this app keeps you sky-bound.
+      </StyledText>
+      <StyledText>
+        Key features? Personalization reigns supreme. Customize your flight
+        tracking experience effortlessly. The dashboard transforms into a
+        real-time flight information hub, pulling data from a trusted API
+        partner. It&apos;s like having a virtual window to the skies, with live
+        flight paths and status updates. Plus, your Flight List Overview
+        simplifies your aviation journey. Easily manage your personalized flight
+        list for any designated timeframe. Add, edit, or delete flights at will.
+        And when a flight is scheduled for today, expect detailed information
+        right on your dashboard. This Flight Tracking App is your ticket to
+        staying in sync with the skies.
       </StyledText>
     </>
   );
@@ -62,8 +65,8 @@ const StyledWord = styled.span`
 const H3 = styled.h3`
   text-align: center;
   font-size: 15px;
-  padding: 10px;
-  margin: 40px;
+  padding: 5px;
+  margin: 20px;
 `;
 
 const StyledText = styled.p`

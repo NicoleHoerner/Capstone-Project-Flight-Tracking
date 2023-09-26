@@ -32,7 +32,7 @@ export default function Home() {
       <H2 aria-label="This month's flights">
         <StyledWord>Miguel&apos;s</StyledWord> Flight Status.
       </H2>
-      {todaysFlights.length > 0 && (
+      {todaysFlights.length > 0 ? (
         <StyledFlightInfo>
           <StyledH3 aria-label="Flight Information">
             Flight Information
@@ -43,6 +43,8 @@ export default function Home() {
             ))}
           </FlightList>
         </StyledFlightInfo>
+      ) : (
+        <NoFlightsMessage>No flights scheduled for today</NoFlightsMessage>
       )}
     </>
   );
@@ -93,4 +95,17 @@ const H2 = styled.h2`
 
 const StyledWord = styled.span`
   color: #7cb9e8;
+`;
+
+const NoFlightsMessage = styled.p`
+  text-align: center;
+  font-size: 15px;
+  padding: 50px;
+  margin: 40px;
+  font-size: 1rem;
+  background-color: #7cb9e8;
+  border: none;
+  border-radius: 10px;
+  padding: 6px 12px;
+  width: max-content;
 `;
