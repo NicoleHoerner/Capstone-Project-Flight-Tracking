@@ -76,11 +76,11 @@ export const InputLabel = styled.label`
   padding: ${(props) =>
     props.$isFocused || props.$isValid ? "5px 10px" : "10px"};
   background: ${(props) =>
-    props.$isFocused || props.$isValid ? "#000" : "transparent"};
+    props.$isFocused || props.$isValid ? "#7CB9E8" : "transparent"};
   letter-spacing: ${(props) =>
     props.$isFocused || props.$isValid ? "0.2em" : "3px"};
   color: ${(props) =>
-    props.$isFocused || props.$isValid ? "#fff" : "#cbd5e1"};
+    props.$isFocused || props.$isValid ? "#fff" : "transparent"};
   border: ${(props) =>
     props.$isFocused || props.$isValid ? "2px" : "initial"};
 `;

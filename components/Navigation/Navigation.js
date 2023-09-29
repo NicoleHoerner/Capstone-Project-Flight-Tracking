@@ -62,38 +62,3 @@ const Navigation = ({ onClose }) => {
 };
 
 export default Navigation;
-
-/* import Image from "next/image";
-import aircraftLogo from "@/public/aircraftLogo.svg";
-import {
-  StyledNav,
-  StyledNavWrapper,
-  StyledUl,
-  StyledNavLink,
-  StyledCloseIcon,
-} from "./Navigation.styled";
-
-const Navigation = ({ onClose }) => {
-  return (
-    <StyledNavWrapper data-testid="navigation">
-      <StyledCloseIcon>
-        <Image
-          src={aircraftLogo}
-          width={30}
-          height={30}
-          alt="close icon"
-          onClick={onClose}
-        />
-      </StyledCloseIcon>
-      <StyledNav>
-        <StyledUl>
-          <StyledNavLink href="/">Dashboard</StyledNavLink>
-          <StyledNavLink href="/flight_list">Flights</StyledNavLink>
-          <StyledNavLink href="/about">About</StyledNavLink>
-        </StyledUl>
-      </StyledNav>
-    </StyledNavWrapper>
-  );
-};
-
-export default Navigation; */
